@@ -140,12 +140,15 @@ img {
 
 .link {
   text-decoration: none;
+  transition: color var(--animation);
 }
 
 .logo .link:hover,
 .logo .link:focus,
 .logo-link:active {
   color: var(--accent-color);
+  outline: none;
+  transition: color var(--animation);
 }
 
 .logo-accent {
@@ -399,7 +402,7 @@ img {
 /*buttons*/
 .btn-item {
   cursor: pointer;
-  transition: color var(--animation);
+  transition: color var(--animation), background-color var(--animation);
 }
 
 .btn-list {
@@ -450,14 +453,16 @@ img {
 .project-link {
   display: block;
   text-decoration: none;
-  transition: color var(--animation);
+  transition: box-shadow var(--animation);
 }
 
+.project-item:hover,
+.project-item:focus,
 .project-link:hover,
 .project-link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
   outline: none;
-  transition: color var(--animation);
+  transition: box-shadow var(--animation);
 }
 
 .project-text {
@@ -482,31 +487,24 @@ img {
    outline: none;
  }
 
-
  .project-overlay {
    position: absolute;
    bottom: 0;
    left: 0;
-
    display: flex;
    align-items: center;
    justify-content: center;
-
    transform: translateY(100%);
    transition: var(--animation);
    overflow: hidden;
    opacity: 0;
-
    width: 100%;
    height: 100%;
-
    background-color: rgba(33, 150, 243, 0.9);
-
  }
 
  .project-overlay-text {
    padding: 63px 24px;
-
    width: 370px;
    height: 294px;
    left: 215px;
@@ -515,9 +513,10 @@ img {
    font-size: 18px;
    line-height: 28px;
    letter-spacing: 0.03em;
-   color: var(--main-color);
+   color: var(--primary-white-color);
    user-select: none;
-
+ }
+  
 .section-title {
   text-align: center;
   margin-bottom: 50px;
@@ -589,10 +588,14 @@ img {
   padding: 6px 22px;
   border-radius: 4px;
   border: 0;
+  transition: box-shadow var(--animation), color var(--animation),
+  background-color var(--animation);
 }
 
 .btn-portfolio-item:hover {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+  outline: none;
+  transition: box-shadow var(--animation);
 }
 
 .portfolio-project-container {
@@ -615,13 +618,16 @@ img {
 }
 
 .contacts-link {
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
+  transition: color var(--animation);
 }
 
 .contacts-link:hover,
 .contacts-link:focus,
 .contacts-link:active {
   color: var(--accent-color);
+  outline: none;
+  transition: color var(--animation);
 }
 
 .contacts-link {
@@ -652,23 +658,29 @@ img {
   justify-content: center;
   width: 44px;
   height: 44px;
-  background-color: var(--main-color);
+  background-color: var(--primary-white-color);
   border-radius: 50%;
+  transition: background-color var(--animation), fill var(--animation);
 }
 
 .social-icon {
   fill: #AFB1B8;
+  transition: fill var(--animation);
 }
 
 .social-links:hover,
 .social-links:focus,
 .social-links:active {
   background-color: var(--accent-color);
+  outline: none;
+  transition: background-color var(--animation);
 }
 
 .social-links:hover .social-icon,
 .social-links:focus .social-icon {
   fill: #FFFFFF;
+  outline: none;
+  transition: fill var(--animation);
 }
 
 /* Features-icon */
@@ -701,7 +713,7 @@ img {
   height: 100%;
   border: 1px solid rgba(175, 177, 184, 1);
   border-radius: 4px;
-
+  transition: border var(--animation);
 }
 
 .clients-icon {
@@ -711,11 +723,15 @@ img {
 .clients-link:hover .clients-icon,
 .clients-link:focus .clients-icon {
   fill: var(--accent-color);
+  outline: none;
+  transition: fill var(--animation);
 }
 
 .clients-link:hover,
 .clients-link:focus {
   border: 1px solid rgba(33, 150, 243, 1);
+  outline: none;
+  transition: border var(--animation);
 }
 
 /* Footer icons */
@@ -747,6 +763,7 @@ img {
   height: 44px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
+  transition: background-color var(--animation);
 }
 
 .footer-social-icon {
@@ -755,18 +772,23 @@ img {
 
 .footer-social-icon {
   fill: var(--primary-white-color);
+  transition: fill var(--animation);
 }
 
 .footer-social-links:hover,
 .footer-social-links:focus,
 .footer-social-links:active {
   background-color: var(--accent-color);
+  outline: none;
+  transition: background-color var(--animation);
 }
 
 .footer-social-links:hover .footer-social-icon,
 .footer-social-links:focus .footer-social-icon {
   fill: var(--primary-white-color);
   background-color: var(--accent-color);
+  outline: none;
+  transition: fill var(--animation), background-color var(--animation);
 }
 
 .footer-title {
@@ -776,4 +798,69 @@ img {
   font-size: 14px;
   line-height: 16px;
   letter-spacing: 3%;
+}
+
+/* Modal Window */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.2);
+
+
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+
+  transition: visibility var(--animation), opacity var(--animation);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1) rotate(0);
+
+  width: 528px;
+  height: 581px;
+  background-color: var(--main-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  opacity: 1;
+  transition: transform var(--animation);
+}
+
+.backdrop.is-hidden .modal {
+  opacity: 0;
+  transition: transform var(--animation);
+}
+
+.modal-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  cursor: pointer;
 }
