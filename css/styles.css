@@ -13,6 +13,7 @@
 
   --indent: 30px;
   --items: 4;
+  --animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -73,6 +74,32 @@ img {
   font-size: 36px;
   line-height: 1.14;
   text-align: center;
+}
+
+.section-item {
+  position: relative;
+}
+
+.img-desc {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70px;
+  background: rgba(47, 48, 58, 0.8);
+}
+
+.img-desc-text {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 00.03em;
+  text-transform: uppercase;
+  color: var(--primary-white-color);
 }
 
 .poster-set {
@@ -161,14 +188,30 @@ img {
 .site-nav .link:focus,
 .site-nav .logo-link:active {
   color: var(--accent-color);
+  transition: color var(--animation);
+  outline: none;
 }
 
 .site-nav .link {
   color: var(--primary-text-color);
+  transition: color var(--animation);
 }
 
 .site-nav .link.current {
   color: var(--accent-color);
+  position: relative;
+}
+
+.site-nav .link.current::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 4px;
+  top: 76px;
+  border-radius: 2px;
+  background-color: var(--accent-color);
 }
 
 .contacts-list {
@@ -182,10 +225,13 @@ img {
 .list-item .link:focus,
 .list-item .link:active {
   color: var(--accent-color);
+  outline: none;
+  transition: color var(--animation);
 }
 
 .list-item .link {
   color: var(--secondary-text-color);
+  transition: color var(--animation);
 }
 
 /*hero-styles*/
@@ -241,12 +287,15 @@ img {
   border-radius: 4px;
   background-color: var(--accent-color);
   color: var(--primary-white-color);
+  transition: color var(--animation), background-color var(--animation);
 }
 
 .btn-hero:hover,
 .btn-hero:focus,
 .btn-hero:active {
   background-color: var(--btncolor-hov);
+  outline: none;
+  transition: background-color var(--animation);
 }
 
 /*spesials-styles*/
@@ -343,9 +392,14 @@ img {
   --items: 6;
 }
 
+.clients-icon {
+  transition: fill var(--animation);
+}
+
 /*buttons*/
 .btn-item {
   cursor: pointer;
+  transition: color var(--animation);
 }
 
 .btn-list {
@@ -357,6 +411,8 @@ img {
 .btn-item:active {
   color: var(--primary-white-color);
   background-color: var(--accent-color);
+  outline: none;
+  transition: color var(--animation), background-color var(--animation);
 }
 
 .btn-item .current {
@@ -370,6 +426,7 @@ img {
   line-height: 1.63;
   text-align: center;
   background-color: var(--background-btncolor);
+  transition: color var(--animation), background-color var(--animation);
 }
 
 /*projects*/
@@ -393,11 +450,14 @@ img {
 .project-link {
   display: block;
   text-decoration: none;
+  transition: color var(--animation);
 }
 
 .project-link:hover,
 .project-link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+  outline: none;
+  transition: color var(--animation);
 }
 
 .project-text {
@@ -406,6 +466,57 @@ img {
   line-height: 1.9;
   color: var(--secondary-text-color);
 }
+
+ .project-link-overlay {
+   display: flex;
+   position: relative;
+   overflow: hidden;
+   transition: transform var(--animation);
+ }
+
+ .project-link:hover .project-overlay,
+ .project-link:focus .project-overlay {
+   transition: transform var(--animation);
+   transform: translateY(0);
+   opacity: 1;
+   outline: none;
+ }
+
+
+ .project-overlay {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   transform: translateY(100%);
+   transition: var(--animation);
+   overflow: hidden;
+   opacity: 0;
+
+   width: 100%;
+   height: 100%;
+
+   background-color: rgba(33, 150, 243, 0.9);
+
+ }
+
+ .project-overlay-text {
+   padding: 63px 24px;
+
+   width: 370px;
+   height: 294px;
+   left: 215px;
+   top: 260px;
+   font-weight: 400;
+   font-size: 18px;
+   line-height: 28px;
+   letter-spacing: 0.03em;
+   color: var(--main-color);
+   user-select: none;
 
 .section-title {
   text-align: center;
